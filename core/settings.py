@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+LOCAL_APPS = [
+    'users.apps.UsersConfig',
+]
+
+INSTALLED_APPS += LOCAL_APPS
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,6 +85,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 DATABASES = {"default": env.db("DATABASE_URL")}
+
+AUTH_USER_MODEL = "users.BaseProfile"
 
 
 # Password validation
