@@ -44,6 +44,9 @@ INSTALLED_APPS = [
 
 LOCAL_APPS = [
     'users.apps.UsersConfig',
+    'trainer.apps.TrainerConfig',
+    'gym.apps.GymConfig',
+    'schedule.apps.ScheduleConfig',
 ]
 
 THIRD_PARTY_APPS = [
