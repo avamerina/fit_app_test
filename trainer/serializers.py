@@ -46,10 +46,19 @@ class TrainerCreateSerializer(serializers.ModelSerializer):
         if base_profile and base_profile.role == 'trainer':
             return attrs
         else:
-            raise serializers.ValidationError('Not a valid profile')
+            raise serializers.ValidationError('Not a valid base profile role')
 
     class Meta:
         model = Trainer
         fields = '__all__'
 
 
+class TrainerUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Trainer
+        fields = [
+            'base_profile',
+            'specialization',
+            'gyms'
+        ]
+        read_only_fields = ['base_profile',]
