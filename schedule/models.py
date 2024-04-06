@@ -16,9 +16,12 @@ class ScheduleUnit(models.Model):
     ]
     trainer = models.ForeignKey(Trainer, on_delete=models.DO_NOTHING)
     gym = models.ForeignKey(Gym, on_delete=models.DO_NOTHING)
-    week_day = models.IntegerField(choices=DAY_CHOICES, default=0)
+    week_day = models.IntegerField(choices=DAY_CHOICES)
     start_time = models.TimeField()
     end_time = models.TimeField()
 
     def __str__(self):
-        return f'{self.trainer.base_profile.name} {self.gym.title}'
+        return f'{self.trainer.base_profile.get_full_name()} {self.gym.title}'
+
+    class Meta:
+        unique_together = ('trainer', 'gym', 'week_day', 'start_time', 'end_time')
