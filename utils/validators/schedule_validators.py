@@ -48,3 +48,9 @@ def conflicting_gym_schedule_units(attrs: dict) -> bool:
     if len(conflicting_units_by_gym) > 0:
         return True
     return False
+
+
+def start_end_time_order_conflict(attrs: dict) -> bool:
+    if attrs["start_time"] > attrs["end_time"]:
+        return True
+    return False
