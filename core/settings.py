@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 import environ
 
@@ -41,6 +41,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+LOCAL_APPS = [
+    'users.apps.UsersConfig',
+    'trainer.apps.TrainerConfig',
+    'gym.apps.GymConfig',
+    'schedule.apps.ScheduleConfig',
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'djoser',
+    'django_filters',
+]
+
+INSTALLED_APPS += LOCAL_APPS
+INSTALLED_APPS += THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,6 +95,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 DATABASES = {"default": env.db("DATABASE_URL")}
+
+AUTH_USER_MODEL = "users.BaseProfile"
 
 
 # Password validation
@@ -121,3 +139,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+DJOSER = {}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+}
