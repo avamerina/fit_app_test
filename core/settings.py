@@ -53,6 +53,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'djoser',
     'django_filters',
+    'drf_spectacular',
 ]
 
 INSTALLED_APPS += LOCAL_APPS
@@ -144,6 +145,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+
 }
 
 DJOSER = {}
@@ -151,4 +154,11 @@ DJOSER = {}
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=3),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'SWAGGER',
+    'DESCRIPTION': 'API documentation',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
