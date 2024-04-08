@@ -48,6 +48,7 @@ LOCAL_APPS = [
     'gym.apps.GymConfig',
     'schedule.apps.ScheduleConfig',
     'appointment.apps.AppointmentConfig',
+    'notification.apps.NotificationConfig',
 ]
 
 THIRD_PARTY_APPS = [
