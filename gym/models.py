@@ -9,3 +9,6 @@ class Gym(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.address}"
+
+    class Meta:
+        db_table = 'gyms'
