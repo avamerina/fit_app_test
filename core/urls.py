@@ -25,6 +25,8 @@ urlpatterns = [
     path('', include('trainer.urls')),
     path('', include('gym.urls')),
     path('', include('schedule.urls')),
+    path('', include('appointment.urls')),
+    path('', include('notification.urls')),
 
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),

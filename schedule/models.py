@@ -25,3 +25,4 @@ class ScheduleUnit(models.Model):
 
     class Meta:
         unique_together = ('trainer', 'gym', 'week_day', 'start_time', 'end_time')
+        db_table = 'schedule_units'

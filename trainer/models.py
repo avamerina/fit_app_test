@@ -27,3 +27,6 @@ class Trainer(models.Model):
 
     def __str__(self):
         return f"{self.base_profile} - {self.specialization}"
+
+    class Meta:
+        db_table = 'trainers'
